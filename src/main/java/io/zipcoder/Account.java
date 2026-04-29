@@ -20,12 +20,12 @@ public abstract class Account {
 
     public Object getAccountHolder() {
         // TODO: Implement getter
-        return accountHolder;
+        return this.accountHolder;
     }
 
     public Double getBalance() {
         // TODO: Implement getter
-        return balance;
+        return this.balance;
     }
 
     public void setBalance(Double balance) {
@@ -35,24 +35,29 @@ public abstract class Account {
 
     public String getAccountNumber() {
         // TODO: Implement getter
-        return accountNumber;
+        return this.accountNumber;
     }
 
     public void credit(Double amount) {
         // TODO: Implement credit method (add money to account)
-        balance += amount;
+        this.balance += amount;
+        System.out.println("Amount: " + amount);
         // TODO: Record this transaction
         transactions.add("Deposited " + amount);
     }
 
     public void debit(Double amount) {
         // TODO: Implement debit method (remove money from account)
-        balance -= amount;
+        if (this.balance >= amount) {
+            this.balance -= amount;
+            System.out.println("Amount: " + amount);
+            System.out.println("Final balance: " + this.balance);
+        }
         // TODO: Record this transaction
         transactions.add("Withdrew " + amount);
     }
     
-    public ArrayList<String> getTransactions() {
+    public Object getTransactions() {
         // TODO: Implement method to return transaction history
         return transactions;
     }
