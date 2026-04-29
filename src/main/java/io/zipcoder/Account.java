@@ -15,6 +15,7 @@ public abstract class Account {
         this.accountHolder = accountHolder;
         this.balance = balance;
         this.accountNumber = accountNumber;
+        this.transactions = new ArrayList<>();
     }
 
     public Object getAccountHolder() {
@@ -39,16 +40,19 @@ public abstract class Account {
 
     public void credit(Double amount) {
         // TODO: Implement credit method (add money to account)
-        this.amount = amount;
+        balance += amount;
         // TODO: Record this transaction
+        transactions.add("Deposited " + amount);
     }
 
     public void debit(Double amount) {
         // TODO: Implement debit method (remove money from account)
+        balance -= amount;
         // TODO: Record this transaction
+        transactions.add("Withdrew " + amount);
     }
-
-    public Object getTransactions() {
+    
+    public ArrayList<String> getTransactions() {
         // TODO: Implement method to return transaction history
         return transactions;
     }
