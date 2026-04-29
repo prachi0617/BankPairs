@@ -21,17 +21,16 @@ public class InvestmentAccount extends Account {
 
     public void applyInterest() {
         // TODO: Implement method to apply interest to the balance
-        Double interest = getBalance() * interestRate;
+        Double interestAmount = getBalance() * interestRate;
         // New balance = current balance + (current balance * interest rate)
-        setBalance(getBalance() + interest);
+        setBalance(getBalance() + interestAmount);
         // Note: Interest applies even to negative balances
-        getTranscation().add("Interest: $ " + interest);
     }
 
     @Override
     public void debit(Double amount) {
         // TODO: Implement debit method
-        super.debit(amount);
+        setBalance(getBalance() - amount);
         // Investment accounts do NOT have overdraft protection - allow balance to go
         // negative
 
