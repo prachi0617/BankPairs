@@ -23,16 +23,26 @@ public class CheckingAccount extends Account {
     @Override
     public void debit(Double amount) {
         // TODO: Implement debit method
-        if (amount == null || amount <=0) return;
         // If overdraftProtection is true, don't allow balance to go negative
-        if (overdraftProtection){
-            if(getBalance() >= amount) {
-                // If overdraftProtection is false, allow balance to go negative
-                super.debit(amount);
+        if (this.overdraftProtection){
+            if(amount > getBalance()) {
+                System.out.println("Transaction declined. ");
+                return;
             } else {
                 super.debit(amount);
             }
+        } else {
+            super.debit(amount);
         }
+
+        /*IF overdraftProtection is TRUE:
+            IF amount > balance:
+                DO NOT allow the transaction (balance stays the same)
+                DO NOT record a transaction
+            ELSE:
+                CALL parent debit method (super.debit(amount))
+        ELSE:
+            CALL parent debit method (super.debit(amount))*/
         
     }
 }

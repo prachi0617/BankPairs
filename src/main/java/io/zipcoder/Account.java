@@ -25,7 +25,7 @@ public abstract class Account {
 
     public Double getBalance() {
         // TODO: Implement getter
-        return this.balance;
+        return balance;
     }
 
     public void setBalance(Double balance) {
@@ -47,14 +47,18 @@ public abstract class Account {
     }
 
     public void debit(Double amount) {
+        if(amount > 0) {
+            this.balance -= amount;
+            this.transactions.add("Withdraw" + amount);
+        }
         // TODO: Implement debit method (remove money from account)
-        if (this.balance >= amount) {
+        /*if (this.balance >= amount) {
             this.balance -= amount;
             System.out.println("Amount: " + amount);
             System.out.println("Final balance: " + this.balance);
         }
         // TODO: Record this transaction
-        transactions.add("Withdrew " + amount);
+        transactions.add("Withdrew " + amount); */
     }
     
     public Object getTransactions() {
